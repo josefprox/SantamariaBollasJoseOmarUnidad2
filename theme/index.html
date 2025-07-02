@@ -45,12 +45,48 @@
     script(src='js/html5shiv.js')
     script(src='js/respond.min.js')
     -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
       .carousel-inner h2,
       .carousel-inner h3,
       .carousel-inner p {
           color: #000 !important;
       }
+      .btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
+  }
+
+  .parallax-section {
+    background-image: url('images/slider/bj2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
+    color: white;
+    text-align: center;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    color: white;
+  }
+
   </style>
   <style>
   #chat-bubble {
@@ -251,7 +287,7 @@
    position: relative;
    background-size: cover;
    background-position: center;
-   height: 100vh; /* Puedes ajustar el alto si quieres */
+   height: 100vh; 
 }
 
 .carousel-item::before {
@@ -261,8 +297,8 @@
    left: 0;
    right: 0;
    bottom: 0;
-   backdrop-filter: blur(5px); /* Efecto de desenfoque */
-   background: rgba(0, 0, 0, 0.3); /* Oscurecer un poco para mejor visibilidad del texto */
+   backdrop-filter: blur(5px); 
+   background: rgba(0, 0, 0, 0.3); 
    z-index: 1;
 }
 
@@ -270,6 +306,41 @@
    position: relative;
    z-index: 2;
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Clases reutilizables */
+.fade-in-up {
+  animation: fadeInUp 1s ease-out both;
+}
+
+.zoom-in {
+  animation: zoomIn 0.8s ease-in-out both;
+}
+
+/* Agrega un pequeño delay si quieres escalonar animaciones */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
 </style>
 
 <div class="carousel slide" id="main-slide" data-ride="carousel">
@@ -282,20 +353,20 @@
 
    <!-- Carousel inner-->
    <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image:url(images/curso1.jpg);">
+      <div class="carousel-item active zoom-in" style="background-image:url(images/curso1.jpg);">
          <div class="container">
             <div class="slider-content text-left">
                <div class="col-md-12">
-                  <h2 class="slide-title title-light">Cursos para páginas web</h2>
-                  <h3 class="slide-sub-title">Javascript, HTML5, CSS, PHP y más...</h3>
-                  <p class="slider-description lead">Descubre el arte de la creación web y lleva tus ideas al mundo digital.<br/>Explora el diseño interactivo y aprende a cautivar a tus usuarios desde la primera visita.</p>
+                  <h2 class="slide-title title-light fade-in-up delay-1">Cursos para páginas web</h2>
+                  <h3 class="slide-sub-title fade-in-up delay-2">Javascript, HTML5, CSS, PHP y más...</h3>
+                  <p class="slider-description lead fade-in-up delay-3">Descubre el arte de la creación web y lleva tus ideas al mundo digital.<br/>Explora el diseño interactivo y aprende a cautivar a tus usuarios desde la primera visita.</p>
                   <p><a class="slider btn btn-primary" href="service.html">Mirar Cursos</a></p>
                </div>
             </div>
          </div>
       </div>
 
-      <div class="carousel-item" style="background-image:url(images/slider/bj2.jpg);">
+      <div class="carousel-item zoom-in" style="background-image:url(images/slider/bj2.jpg);">
          <div class="container">
             <div class="slider-content text-center">
                <div class="col-md-12">
@@ -308,7 +379,7 @@
          </div>
       </div>
 
-      <div class="carousel-item" style="background-image:url(images/slider/b3.jpg);">
+      <div class="carousel-item zoom-in" style="background-image:url(images/slider/b3.jpg);">
          <div class="container">
             <div class="slider-content text-right">
                <div class="col-md-12">
@@ -330,11 +401,11 @@
       <span><i class="fa fa-angle-right"></i></span>
    </a>
 </div>
-      
+
       <section id="ts-features-light" class="ts-features-light">
          <div class="container">
             <div class="row feature-light-row">
-               <div class="col-md-4 text-center">
+               <div class="col-md-4 text-center" class="glass-card" data-aos="zoom-in">
                   <div class="ts-feature-box">
                      <div class="ts-feature-info">
                         <div class="feature-img">
@@ -348,7 +419,7 @@
                   <!-- feature box-1 end-->
                </div>
                <!-- col-1 end-->
-               <div class="col-md-4 text-center border-left">
+               <div class="col-md-4 text-center border-left" class="glass-card" data-aos="zoom-in">
                   <div class="ts-feature-box">
                      <div class="ts-feature-info">
                         <div class="feature-img">
@@ -362,7 +433,7 @@
                   <!-- feature box-2 end-->
                </div>
                <!-- col-2 end-->
-               <div class="col-md-4 text-center border-left">
+               <div class="col-md-4 text-center border-left" class="glass-card" data-aos="zoom-in">
                   <div class="ts-feature-box">
                      <div class="ts-feature-info">
                         <div class="feature-img">
@@ -387,14 +458,14 @@
          <div class="container">
             <div class="row text-center">
                <div class="col-md-12">
-                  <h2 class="section-title"><span>No busques mas</span>Porque Cursos Data?</h2>
+                  <h2 class="section-title" data-aos="fade-up"><span>No busques mas</span>Porque Cursos Data?</h2>
                </div>
             </div>
             <!-- Title row end-->
             <div class="row">
                <div class="col-lg-4 col-md-12">
                   <div class="ts-service-wrapper">
-                    <div class="ts-service-box">
+                    <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img">
                         <img src="images/icon/why-1.png" alt="" />
                      </div>
@@ -404,7 +475,7 @@
                     </div>
                   </div><!-- Service 1 end -->
                   <div class="gap-15"></div>
-                  <div class="ts-service-box">
+                  <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img">
                         <img src="images/icon/why-2.png " alt="" />
                      </div>
@@ -414,7 +485,7 @@
                     </div>
                   </div><!-- Service 2 end -->
                   <div class="gap-15"></div>
-                  <div class="ts-service-box">
+                  <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img">
                         <img src="images/icon/why-4.png " alt="" />
                      </div>
@@ -431,7 +502,7 @@
 
                <div class="col-lg-4 col-md-12">
                   <div class="ts-service-wrapper ml-lg-auto">
-                    <div class="ts-service-box">
+                    <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img ">
                         <img src="images/icon/why-3.png" alt="" />
                      </div>
@@ -441,7 +512,7 @@
                     </div>
                   </div><!-- Service 4 end -->
                   <div class="gap-15"></div>
-                  <div class="ts-service-box">
+                  <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img">
                         <img src="images/icon/why-5.png" alt="" />
                      </div>
@@ -451,7 +522,7 @@
                     </div>
                   </div><!-- Service 5 end -->
                   <div class="gap-15"></div>
-                  <div class="ts-service-box">
+                  <div class="ts-service-box" data-aos="fade-right">
                      <div class="ts-service-box-img">
                         <img src="images/icon/why-6.png" alt="" />
                      </div>
@@ -587,6 +658,13 @@
       return 'Lo siento, soy un bot básico. Puedes dejar tu consulta y te contactaremos pronto.';
     }
   }
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
 </script>
 </body>
 
