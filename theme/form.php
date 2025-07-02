@@ -83,7 +83,22 @@ if (isset($_POST['login'])) {
    <!--if lt IE 9
     script(src='js/html5shiv.js')
     script(src='js/respond.min.js')
-    -->
+    --><style>
+    .btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
+  }
+  </style>
 </head>
 
 <body>

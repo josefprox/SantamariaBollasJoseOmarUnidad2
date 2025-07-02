@@ -106,6 +106,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       .carousel-inner p {
           color: #000 !important;
       }
+      .btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
+  }
   </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
