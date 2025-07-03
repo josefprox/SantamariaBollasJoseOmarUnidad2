@@ -100,12 +100,27 @@ if (isset($_POST['curso']) && isset($_POST['duracion'])) {
     script(src='js/html5shiv.js')
     script(src='js/respond.min.js')
     -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
         .carousel-inner h2,
         .carousel-inner h3,
         .carousel-inner p {
             color: #000 !important;
         }
+         .btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
+  }
     </style>
 
     <head>
@@ -372,13 +387,13 @@ if (isset($_SESSION['usuario'])) {
          <div class="row text-center">
             <div class="col-md-12">
                <h2 class="section-title"><span>Explora contenidos de programación</span>Lenguajes y Herramientas</h2>
-               <p class="mt-4">Buscar curso:</p>
-               <input type="text" id="buscador" class="form-control mt-3" placeholder="Buscar lenguaje o herramienta...">
+               <p class="mt-2">Buscar curso:</p>
+               <input type="text" id="buscador" class="form-control mt-1" placeholder="Buscar lenguaje o herramienta...">
             </div>
          </div>
          <br>
          <div class="row" id="cards-container">
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv1.jpg" alt="Python">
@@ -386,11 +401,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">Python</h3>
                      <p>Lenguaje versátil usado en ciencia de datos, backend y automatización.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv2.jpg" alt="Java">
@@ -398,11 +413,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">Java</h3>
                      <p>Popular en desarrollo empresarial, Android y sistemas robustos.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv3.jpg" alt="JavaScript">
@@ -410,11 +425,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">JavaScript</h3>
                      <p>Lenguaje clave para el desarrollo web interactivo en el navegador.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv4.png" alt="MySQL">
@@ -422,11 +437,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">MySQL</h3>
                      <p>Sistema de gestión de bases de datos relacional ampliamente usado.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv5.png" alt="PHP">
@@ -434,11 +449,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">PHP</h3>
                      <p>Lenguaje de scripting usado en servidores para construir sitios web dinámicos.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv6.svg" alt="Node.js">
@@ -446,11 +461,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">Node.js</h3>
                      <p>Entorno para ejecutar JavaScript del lado del servidor, ideal para apps en tiempo real.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv7.jpg" alt="SQL Server">
@@ -458,11 +473,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">SQL Server</h3>
                      <p>Base de datos relacional de Microsoft para soluciones empresariales.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv8.png" alt="C#">
@@ -470,11 +485,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">C#</h3>
                      <p>Lenguaje moderno desarrollado por Microsoft para aplicaciones web, móviles y juegos.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv9.png" alt="Laravel">
@@ -482,11 +497,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">Laravel</h3>
                      <p>Framework de PHP elegante y potente para desarrollar aplicaciones web robustas.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv10.png" alt="React">
@@ -494,11 +509,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">React</h3>
                      <p>Biblioteca de JavaScript para construir interfaces de usuario reactivas y modernas.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv11.png" alt="MongoDB">
@@ -506,11 +521,11 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">MongoDB</h3>
                      <p>Base de datos NoSQL orientada a documentos, ideal para datos flexibles y escalables.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv12.jpg" alt="Python IA">
@@ -518,7 +533,7 @@ if (isset($_SESSION['usuario'])) {
                   <div class="ts-service-content">
                      <h3 class="service-title">Python para IA</h3>
                      <p>Uso de Python con librerías como TensorFlow y PyTorch en inteligencia artificial.</p>
-                     <p><a class="link-more" href="#">Unirse al curso <i class="icon icon-right-arrow2"></i></a></p>
+                     <p><a class="link-more" href="form.php">Inicia sesión <i class="icon icon-right-arrow2"></i></a></p>
                   </div>
                </div>
             </div>
@@ -661,6 +676,13 @@ if (isset($_SESSION['usuario'])) {
       return 'Lo siento, soy un bot básico. Puedes dejar tu consulta y te contactaremos pronto.';
     }
   }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
 </script>
 </body>
 

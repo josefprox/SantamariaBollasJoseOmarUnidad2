@@ -96,6 +96,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             from { transform: translateX(0); opacity: 0.95; }
             to { transform: translateX(100%); opacity: 0; }
         }
+        .form-group input {
+  transition: all 0.3s ease;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.form-group input:hover {
+  border-color: #b30000;
+  box-shadow: 0 0 8px rgba(179, 0, 0, 0.3);
+}
+
+.form-group input:focus {
+  border-color: #b30000;
+  outline: none;
+  background-color: #fff3f3;
+}
+
+/* Animación de entrada del formulario */
+.form-reset {
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto visual del botón */
+.btn-primary {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
     </style>
 </head>
 <body>
@@ -156,6 +200,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     });
 </script>
+<script>
+    // Efecto de foco en campos con interacción visual
+    const campos = document.querySelectorAll('.form-control');
 
+    campos.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.backgroundColor = '#fff5f5';
+        });
+        input.addEventListener('blur', () => {
+            input.style.backgroundColor = '';
+        });
+    });
+
+    function mostrarToast(mensaje, tipo = 'success') {
+        const container = document.getElementById('toast-container');
+
+        const toast = document.createElement('div');
+        toast.classList.add('toast', tipo);
+        toast.innerHTML = mensaje;
+
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.5s ease forwards';
+            toast.addEventListener('animationend', () => {
+                toast.remove();
+            });
+        }, 3000);
+    }
+
+    // Mostrar mensaje desde PHP
+    window.addEventListener('DOMContentLoaded', () => {
+        const mensaje = <?= json_encode($alertMessageText) ?>;
+        const tipo = <?= json_encode($alertMessageType) ?>;
+        const redirigir = <?= json_encode($redirigir) ?>;
+
+        if (mensaje) {
+            mostrarToast(mensaje, tipo);
+        }
+
+        if (redirigir) {
+            setTimeout(() => {
+                window.location.href = 'form.php';
+            }, 3000);
+        }
+    });
+</script>
 </body>
 </html>

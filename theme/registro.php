@@ -120,6 +120,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
   }
+  /* Efectos en los inputs */
+.form-group input {
+  transition: all 0.3s ease;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.form-group input:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
+/* Animación al cargar */
+.contact-form {
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botón con hover animado */
+.btn-primary {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
   </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -339,6 +384,20 @@ document.getElementById('formRegistro').addEventListener('submit', function(even
       <script type="text/javascript" src="js/custom.js"></script>
    </div>
    <!--Body Inner end-->
+   <script>
+// Efecto al enfocar campos
+const inputs = document.querySelectorAll('.form-control');
+
+inputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    input.style.backgroundColor = '#f8f9fa';
+  });
+
+  input.addEventListener('blur', () => {
+    input.style.backgroundColor = '';
+  });
+});
+</script>
 </body>
 
 </html>

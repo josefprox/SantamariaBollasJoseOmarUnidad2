@@ -45,6 +45,7 @@
     script(src='js/html5shiv.js')
     script(src='js/respond.min.js')
     -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
       .carousel-inner h2,
       .carousel-inner h3,
@@ -65,6 +66,50 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
   }
+  .ts-feature-box {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.ts-feature-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background-color: #fefefe;
+}
+
+.ts-feature-box img {
+  transition: transform 0.4s ease;
+}
+
+.ts-feature-box:hover img {
+  transform: rotate(3deg) scale(1.1);
+}
+
+.percent-area {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.percent-area:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.banner-title {
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </style>
   <head>
   <meta charset="UTF-8" />
@@ -444,7 +489,7 @@
          </div>
          <br>
          <div class="row" id="cards-container">
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv1.jpg" alt="Python">
@@ -456,7 +501,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv2.jpg" alt="Java">
@@ -468,7 +513,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv3.jpg" alt="JavaScript">
@@ -480,7 +525,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv4.png" alt="MySQL">
@@ -492,7 +537,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv5.png" alt="PHP">
@@ -504,7 +549,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv6.svg" alt="Node.js">
@@ -516,7 +561,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv7.jpg" alt="SQL Server">
@@ -528,7 +573,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv8.png" alt="C#">
@@ -540,7 +585,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv9.png" alt="Laravel">
@@ -552,7 +597,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv10.png" alt="React">
@@ -564,7 +609,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv11.png" alt="MongoDB">
@@ -576,7 +621,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-12 card-item">
+            <div class="col-lg-4 col-md-12 card-item" data-aos="fade-up">
                <div class="ts-service-box">
                   <div class="ts-service-image-wrapper">
                      <img class="img-fluid" src="images/services/serv12.jpg" alt="Python IA">
@@ -742,6 +787,13 @@
       return 'Lo siento, soy un bot básico. Puedes dejar tu consulta y te contactaremos pronto.';
     }
   }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
 </script>
 </body>
 

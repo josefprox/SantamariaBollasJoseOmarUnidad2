@@ -6,6 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once 'db_conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    header('Content-Type: application/json');
 
     // Envío de mensaje por correo
     if (isset($_POST["enviar_correo"])) {
@@ -45,11 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>';
 
             $mail->send();
-            echo "<script>alert('✅ ¡Mensaje enviado correctamente!'); window.location.href='contact.php';</script>";
-            exit();
+            echo json_encode(['success' => true, 'message' => '✅ ¡Mensaje enviado correctamente!']);
+            exit;
         } catch (Exception $e) {
-            echo "<script>alert('❌ Error al enviar mensaje: {$mail->ErrorInfo}'); window.location.href='contact.php';</script>";
-            exit();
+            echo json_encode(['success' => false, 'message' => '❌ Error al enviar mensaje: ' . $mail->ErrorInfo]);
+            exit;
         }
     }
 
@@ -66,17 +67,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $query->bindParam(':comentario', $comentario);
 
             if ($query->execute()) {
-                echo "<script>alert('✅ Comentario registrado correctamente'); window.location.href='contact.php';</script>";
-                exit();
+                echo json_encode(['success' => true, 'message' => '✅ Comentario registrado correctamente']);
+                exit;
             } else {
-                echo "<script>alert('❌ Error al registrar el comentario'); window.location.href='contact.php';</script>";
-                exit();
+                echo json_encode(['success' => false, 'message' => '❌ Error al registrar el comentario']);
+                exit;
             }
         } else {
-            echo "<script>alert('Todos los campos son obligatorios para registrar el comentario'); window.location.href='contact.php';</script>";
-            exit();
+            echo json_encode(['success' => false, 'message' => '⚠️ Todos los campos son obligatorios']);
+            exit;
         }
     }
+ echo json_encode(['success' => false, 'message' => '⚠️ Acción no válida']);
+    exit;
 }
 
 // Mostrar comentarios
@@ -135,6 +138,11 @@ try {
     script(src='js/html5shiv.js')
     script(src='js/respond.min.js')
     -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
     <style>
       .carousel-inner h2,
       .carousel-inner h3,
@@ -283,6 +291,50 @@ try {
     cursor: pointer;
     font-size: 20px;
   }
+ .ts-feature-box {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.ts-feature-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background-color: #fefefe;
+}
+
+.ts-feature-box img {
+  transition: transform 0.4s ease;
+}
+
+.ts-feature-box:hover img {
+  transform: rotate(3deg) scale(1.1);
+}
+
+.percent-area {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.percent-area:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.banner-title {
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
 </head>
 
@@ -431,7 +483,7 @@ try {
                     <div class="col-lg-6">
    <h3 class="column-title">Enviar mensaje por correo</h3>
    <div class="contact-submit-box contact-box form-box">
-      <form class="contact-form" action="contact.php" method="POST">
+      <form class="contact-form" id="formCorreo" method="POST">
          <div class="form-group">
             <input class="form-control" name="name" placeholder="Nombre completo" type="text" required>
          </div>
@@ -441,7 +493,7 @@ try {
          <div class="form-group">
             <textarea class="form-control" name="message" placeholder="Mensaje" rows="6" required></textarea>
          </div>
-         <button class="btn btn-primary" type="submit" name="enviar_correo">
+         <button class="btn btn-primary" type="submit">
    <i class="fa fa-paper-plane-o"></i> Enviar mensaje
 </button>
       </form>
@@ -451,7 +503,7 @@ try {
 
    <h3 class="column-title">Dejar un comentario</h3>
    <div class="contact-submit-box contact-box form-box">
-      <form class="contact-form" id="comment-form" action="contact.php" method="POST">
+      <form class="contact-form" id="formComentario" method="POST">
          <div class="form-group">
             <input class="form-control" name="nombre" placeholder="Tu nombre" type="text" required>
          </div>
@@ -461,7 +513,7 @@ try {
          <div class="form-group">
             <textarea class="form-control" name="comentario" placeholder="Escribe tu comentario" rows="6" required></textarea>
          </div>
-         <button class="btn btn-primary" type="submit" name="registrar">
+         <button class="btn btn-primary" type="submit">
    <i class="fa fa-check"></i> Registrar comentario
 </button>
       </form>
@@ -631,6 +683,54 @@ try {
       return 'Lo siento, soy un bot básico. Puedes dejar tu consulta y te contactaremos pronto.';
     }
   }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Enviar mensaje por correo
+  document.getElementById('formCorreo').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    formData.append('enviar_correo', '1'); // Bandera para el backend
+
+    fetch('contact.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      alert(data.message);
+      if (data.success) {
+        document.getElementById('formCorreo').reset();
+      }
+    })
+    .catch(err => {
+      alert('❌ Error al enviar el mensaje.');
+    });
+  });
+
+  // Registrar comentario
+  document.getElementById('formComentario').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    formData.append('registrar', '1');
+
+    fetch('contact.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      alert(data.message);
+      if (data.success) {
+        document.getElementById('formComentario').reset();
+        location.reload(); // Opcional: recargar para ver el nuevo comentario
+      }
+    })
+    .catch(err => {
+      alert('❌ Error al registrar el comentario.');
+    });
+  });
+});
 </script>
 </body>
 

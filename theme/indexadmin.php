@@ -92,6 +92,65 @@ if (isset($_POST['curso']) && isset($_POST['duracion'])) {
         .carousel-inner p {
             color: #000 !important;
         }
+         .btn {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3);
+  }
+   /* Efectos en los inputs */
+.form-group input {
+  transition: all 0.3s ease;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.form-group input:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
+/* Animación al cargar */
+.contact-form {
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botón con hover animado */
+.btn-primary {
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
     </style>
 </head>
 
@@ -173,7 +232,7 @@ if (isset($_SESSION['usuario'])) {
 
     // Formulario
     echo '<div class="col-lg-7 mx-auto mb-4">';
-    echo '<form id="search-form" name="gs" method="post" role="search" action="#">';
+    echo '<form id="asignar-curso-form" name="gs" method="post" role="search" action="#">';
     echo '<div class="row justify-content-center align-items-center">';
 
     // Usuario select
@@ -202,7 +261,7 @@ if (isset($_SESSION['usuario'])) {
 
     // Botón
     echo '<div class="col-lg-12 text-center">';
-    echo '<button class="btn btn-danger px-4 py-2" type="submit">Asignar Curso</button>';
+    echo '<button class="btn btn-danger px-4 py-2" type="button" id="btn-asignar">Asignar Curso</button>';
     echo '</div>';
 
     echo '</div>';
@@ -351,6 +410,49 @@ if (isset($_SESSION['usuario'])) {
       <script type="text/javascript" src="js/custom.js"></script>
    </div>
    <!--Body Inner end-->
+  <script>
+$(document).ready(function () {
+    $('#btn-asignar').on('click', function () {
+        const form = $('#asignar-curso-form');
+        const formData = form.serialize();
+
+        $.ajax({
+            url: 'asignar_curso.php', // asegúrate de que esta ruta sea correcta
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'ok') {
+                    alert(response.message);
+                    location.reload();
+                } else {
+                    alert('Error: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('Error en la solicitud AJAX.');
+                console.log('Status:', status);
+                console.log('XHR:', xhr.responseText);
+                console.log('Error:', error);
+            }
+        });
+    });
+});
+</script>
+<script>
+// Efecto al enfocar campos
+const inputs = document.querySelectorAll('.form-control');
+
+inputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    input.style.backgroundColor = '#f8f9fa';
+  });
+
+  input.addEventListener('blur', () => {
+    input.style.backgroundColor = '';
+  });
+});
+</script>
 </body>
 
 </html>
