@@ -151,6 +151,15 @@ if (isset($_POST['curso']) && isset($_POST['duracion'])) {
   transform: scale(1.05);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
 }
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
     </style>
 </head>
 

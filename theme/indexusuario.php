@@ -277,6 +277,34 @@ if (isset($_POST['curso']) && isset($_POST['duracion'])) {
     cursor: pointer;
     font-size: 20px;
   }
+  .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+    .ts-service-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ts-service-box:hover {
+  transform: scale(1.05); /* Zoom */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+.ts-service-image-wrapper {
+  overflow: hidden;
+}
+
+.ts-service-image-wrapper img {
+  transition: transform 0.3s ease;
+}
+
+.ts-service-box:hover .ts-service-image-wrapper img {
+  transform: scale(0.9);
+}
 </style>
 </head>
 
